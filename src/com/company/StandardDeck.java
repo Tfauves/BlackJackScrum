@@ -1,0 +1,39 @@
+package com.company;
+
+import com.company.card.Card;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class StandardDeck implements Deck {
+    private final List<Card> cards = new ArrayList<>();
+    public final String[] SUITS = {"Diamond", "Spade", "Heart", "Club"
+    };
+    public final String[] FACE_VALUE = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"
+    };
+
+    public StandardDeck() {
+        for (String suit : SUITS) {
+            for (String value : FACE_VALUE) {
+                cards.add(new Card(suit, value));
+            }
+        }
+    }
+
+    public void printDeck() {
+        System.out.println(cards);
+    }
+
+    public void shuffle() {
+        Collections.shuffle(cards);
+    }
+
+    public Card deal() {
+        return cards.remove(cards.size() -1);
+    }
+
+    public List<Card> getCards() {
+        return cards;
+    }
+}
