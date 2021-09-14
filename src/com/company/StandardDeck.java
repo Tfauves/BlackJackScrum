@@ -10,12 +10,12 @@ public class StandardDeck implements Deck {
     private final List<Card> cards = new ArrayList<>();
     public final String[] SUITS = {"Diamond", "Spade", "Heart", "Club"
     };
-    public final String[] FACE_VALUE = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"
+    public final int[] FACE_VALUE = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
     };
 
     public StandardDeck() {
         for (String suit : SUITS) {
-            for (String value : FACE_VALUE) {
+            for (int value : FACE_VALUE) {
                 cards.add(new Card(suit, value));
             }
         }
