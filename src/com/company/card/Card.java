@@ -17,10 +17,13 @@ public class Card {
     }
 
     public String display() {
-        String outPut = " ";
-        switch (faceValue) {
-            case
-        }
+        return switch (faceValue) {
+            case 1 -> "AC";
+            case 11 -> "JK";
+            case 12 -> "QU";
+            case 13 -> "KI";
+            default -> " ";
+        };
     }
 
 }
