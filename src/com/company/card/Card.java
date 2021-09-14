@@ -12,6 +12,7 @@ public class Card {
     public int getFaceValue() {
         return faceValue;
     }
+
     public String toString() {
         return faceValue + " " + suit ;
     }
