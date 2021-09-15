@@ -8,7 +8,7 @@ import java.util.List;
 
 public class StandardDeck implements Deck {
     private final List<Card> cards = new ArrayList<>();
-    public final String[] SUITS = {"Diamond", "Spade", "Heart", "Club"
+    public final String[] SUITS = {"♦", "♠", "♣", "♥"
     };
     public final int[] FACE_VALUE = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
     };

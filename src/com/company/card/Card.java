@@ -18,14 +18,16 @@ public class Card {
     }
 
     public String display() {
-        return switch (faceValue) {
-            case 1 -> "AC";
-            case 11 -> "JK";
-            case 12 -> "QU";
-            case 13 -> "KI";
-            default -> faceValue == 10 ? Integer.toString(faceValue) : " " + faceValue;
+        String outPut = "";
+        switch (faceValue) {
+            case 1 -> outPut = "AC";
+            case 11 -> outPut = "JK";
+            case 12 -> outPut = "QU";
+            case 13 -> outPut = "KI";
+            default -> outPut = faceValue == 10 ? Integer.toString(faceValue) : " " + faceValue;
             //            case 0 -> output = "JR"; //joker
         };
+        return outPut + suit;
     }
 
 }
