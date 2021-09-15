@@ -23,7 +23,8 @@ public class Card {
             case 11 -> "JK";
             case 12 -> "QU";
             case 13 -> "KI";
-            default -> " ";
+            default -> faceValue == 10 ? Integer.toString(faceValue) : " " + faceValue;
+            //            case 0 -> output = "JR"; //joker
         };
     }
 

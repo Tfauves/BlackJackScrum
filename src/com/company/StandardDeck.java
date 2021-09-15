@@ -21,10 +21,6 @@ public class StandardDeck implements Deck {
         }
     }
 
-    public void printDeck() {
-        System.out.println(cards);
-    }
-
     public void shuffle() {
         Collections.shuffle(cards);
     }
