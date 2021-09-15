@@ -7,8 +7,8 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class CheatersDeck implements Deck {
-    private Card chosenCard;
-    private Scanner scanner = new Scanner(System.in);
+//    private Card chosenCard;
+//    private Scanner scanner = new Scanner(System.in);
     public final String[] SUITS = {"Diamond", "Spade", "Heart", "Club"
     };
     public final int [] FACE_VALUE = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13

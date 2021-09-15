@@ -8,10 +8,11 @@ public class Main {
 	// write your code here
         Deck cardDeck = new CheatersDeck();
         cardDeck.shuffle();
-
-
-        for (int i = 0; i < 5; i++) {
-            System.out.println(cardDeck.deal());
-        }
+        System.out.println(cardDeck.deal().display());
+        System.out.println(cardDeck.deal().display());
+        System.out.println(cardDeck.deal().display());
+        System.out.println(cardDeck.deal().display());
+        System.out.println(cardDeck.deal().display());
+        System.out.println(cardDeck.deal().display());
     }
 }
