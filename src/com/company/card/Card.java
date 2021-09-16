@@ -27,7 +27,7 @@ public class Card {
             default -> outPut = faceValue == 10 ? Integer.toString(faceValue) : " " + faceValue;
             //            case 0 -> output = "JR"; //joker
         };
-        return outPut + suit;
+        return outPut + " " + suit;
     }
 
 }
