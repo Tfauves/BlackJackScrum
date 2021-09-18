@@ -1,4 +1,4 @@
-package com.company;
+package com.company.card;
 
 import com.company.card.Card;
 

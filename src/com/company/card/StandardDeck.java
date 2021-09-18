@@ -1,6 +1,7 @@
-package com.company;
+package com.company.card;
 
 import com.company.card.Card;
+import com.company.card.Deck;
 
 import java.util.ArrayList;
 import java.util.Collections;

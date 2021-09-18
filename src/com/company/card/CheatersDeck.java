@@ -1,10 +1,6 @@
 package com.company.card;
 
-import com.company.Console;
-import com.company.Deck;
-
-import java.util.Arrays;
-import java.util.Scanner;
+import com.company.util.Console;
 
 public class CheatersDeck implements Deck {
 //    private Card chosenCard;
