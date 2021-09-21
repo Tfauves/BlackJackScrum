@@ -1,7 +1,7 @@
 package com.company;
 
-import com.company.card.CheatersDeck;
-import com.company.card.Deck;
+import com.company.cardGame.deck.CheatersDeck;
+import com.company.cardGame.deck.Deck;
 
 public class Main {
 

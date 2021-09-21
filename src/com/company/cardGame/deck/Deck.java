@@ -1,6 +1,4 @@
-package com.company.card;
-
-import com.company.card.Card;
+package com.company.cardGame.deck;
 
 public interface Deck {
     Card deal();

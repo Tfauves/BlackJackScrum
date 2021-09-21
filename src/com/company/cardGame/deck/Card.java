@@ -1,4 +1,4 @@
-package com.company.card;
+package com.company.cardGame.deck;
 
 public class Card {
     private final String suit;
