@@ -24,9 +24,15 @@ public class Hand {
         for (Card card : cards) {
             outPut += card.display() + " ";
         }
-
         return outPut.toString().trim();
+    }
 
+    public String displayValue() {
+        int score = 0;
+        for (Card card : cards) {
+            score += card.getFaceValue();
+        }
+        return Integer.toString(score);
     }
 
 
