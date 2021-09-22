@@ -30,7 +30,12 @@ public class Hand {
     public String displayValue() {
         int score = 0;
         for (Card card : cards) {
-            score += card.getFaceValue();
+            int value  = card.getFaceValue();
+            switch (value) {
+                case 1 -> score += 1;
+                case 11, 12, 13 -> score += 10;
+                default -> score += value;
+            }
         }
         return Integer.toString(score);
     }
