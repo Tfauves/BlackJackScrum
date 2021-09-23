@@ -4,6 +4,7 @@ import com.company.cardGame.blackJack.Actor;
 import com.company.cardGame.blackJack.Hand;
 
 public class Dealer implements Actor {
+    public int STAND_VALUE = 17;
     public String getName() {
         return "Arnell";
     }
@@ -18,7 +19,6 @@ public class Dealer implements Actor {
     }
 
     public int getAction(Hand hand) {
-
-        return 0;
+        return hand.getValue() < STAND_VALUE ? HIT : STAND;
     }
 }

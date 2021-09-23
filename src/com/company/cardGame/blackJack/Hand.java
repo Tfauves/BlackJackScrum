@@ -27,7 +27,7 @@ public class Hand {
         return outPut.toString().trim();
     }
 
-    public int displayValue() {
+    public int getValue() {
         int score = 0;
         boolean hasAce11 = false;
         for (Card card : cards) {
