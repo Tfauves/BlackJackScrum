@@ -34,7 +34,7 @@ public class Player implements Actor {
 
     private String getAvailableActions() {
         StringBuilder outPut = new StringBuilder();
-        outPut.append("0. Quit\n1. Hit\n 2. Stand");
+        outPut.append("0. Quit\n1. Hit\n2. Stand");
         // TODO: 9/23/2021 add logic for double.
         // TODO: 9/23/2021 1. confirm first turn.
         // TODO: 9/23/2021 2. confirm player has enough funds.
@@ -51,8 +51,8 @@ public class Player implements Actor {
         System.out.println(hand.displayHand());
         System.out.println(hand.getValue());
         //display available actions
-        System.out.println("1. Hit\n2. Stand\n0. Quit");
+//        System.out.println("1. Hit\n2. Stand\n0. Quit");
         //get selected action
-        return Console.getInt(0,2,"", "Invalid action");
+        return Console.getInt(0,2,getAvailableActions(), "Invalid action");
     }
 }

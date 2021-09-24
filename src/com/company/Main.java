@@ -20,7 +20,6 @@ public class Main {
 //        System.out.println(cardDeck.deal().display());
 //        System.out.println(cardDeck.deal().display());
 //        System.out.println(cardDeck.deal().display());
-        Hand myhand = new Hand();
 //        myhand.addCard(cardDeck.deal());
 //        myhand.addCard(cardDeck.deal());
 //        System.out.println(myhand.displayHand());
@@ -29,6 +28,7 @@ public class Main {
 //        System.out.println(myhand.displayHand());
 //        System.out.println(myhand.getValue());
         Actor dealer = new Player(Console.getString("Player name?", true));
+        Hand myhand  = new Hand(dealer);
         myhand.addCard(cardDeck.deal());
         myhand.addCard(cardDeck.deal());
 //        System.out.println(myhand.displayHand());
