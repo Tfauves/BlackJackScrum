@@ -37,5 +37,6 @@ public class Main {
             System.out.println(myhand.displayHand());
             System.out.println(myhand.getValue());
         }
+        System.out.println("Done");
     }
 }
