@@ -9,7 +9,7 @@ import java.util.List;
 public class Hand {
     private List<Card> cards = new ArrayList<>();
     private int bet = 0;
-//    private Player player;
+    private Actor player;
 
     public void addCard(Card card) {
         cards.add(card);
