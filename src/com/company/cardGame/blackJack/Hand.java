@@ -56,6 +56,7 @@ public class Hand {
     }
 
     public int getAction() {
+
         return holder.getAction(this);
     }
 
