@@ -40,7 +40,10 @@ public class Player implements Actor {
         // TODO: 9/23/2021 1. confirm first turn.
         if (hand.size() == 2 && balance >= hand.getBet() ) {
             outPut.append("\n3. Double");
+            if (hand.canSplit()) {
+                outPut.append("\n4. Split");
 
+            }
 
         }
 
