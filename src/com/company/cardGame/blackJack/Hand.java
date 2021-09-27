@@ -64,4 +64,9 @@ public class Hand {
         return cards.size();
     }
 
+    public int getBet() {
+    return bet;
+
+    }
+
 }
