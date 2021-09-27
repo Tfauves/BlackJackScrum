@@ -60,4 +60,8 @@ public class Hand {
         return holder.getAction(this);
     }
 
+    public int size() {
+        return cards.size();
+    }
+
 }
