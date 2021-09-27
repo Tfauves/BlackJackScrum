@@ -41,6 +41,7 @@ public class Player implements Actor {
         if (hand.size() == 2 && balance >= hand.getBet() ) {
             outPut.append("\n3. Double");
 
+
         }
 
         // TODO: 9/23/2021 2. confirm player has enough funds.

@@ -2,29 +2,29 @@ package com.company.cardGame.deck;
 
 public class Card {
     private final String suit;
-    private final int faceValue;
+    private final int rank;
 
-    public Card(String suit, int faceValue) {
+    public Card(String suit, int rank) {
         this.suit = suit;
-        this.faceValue = faceValue;
+        this.rank = rank;
     }
 
-    public int getFaceValue() {
-        return faceValue;
+    public int getRank() {
+        return rank;
     }
 
     public String toString() {
-        return faceValue + " " + suit ;
+        return rank + " " + suit ;
     }
 
     public String display() {
         String outPut = "";
-        switch (faceValue) {
+        switch (rank) {
             case 1 -> outPut = "AC";
             case 11 -> outPut = "JK";
             case 12 -> outPut = "QU";
             case 13 -> outPut = "KI";
-            default -> outPut = faceValue == 10 ? Integer.toString(faceValue) : " " + faceValue;
+            default -> outPut = rank == 10 ? Integer.toString(rank) : " " + rank;
             //            case 0 -> output = "JR"; //joker
         };
         return outPut + " " + suit;

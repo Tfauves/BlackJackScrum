@@ -1,7 +1,6 @@
 package com.company.cardGame.blackJack;
 
 import com.company.cardGame.deck.Card;
-import com.company.cardGame.deck.Deck;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +34,7 @@ public class Hand {
         int score = 0;
         boolean hasAce11 = false;
         for (Card card : cards) {
-            int value  = card.getFaceValue();
+            int value  = card.getRank();
             switch (value) {
                 case 1 -> {
                   value = score + 11 > 21 ? 1 : 11;
@@ -67,6 +66,10 @@ public class Hand {
     public int getBet() {
     return bet;
 
+    }
+
+    public boolean canSplit() {
+        return cards.get(0).getRank() == cards.get(1).getRank();
     }
 
 }
