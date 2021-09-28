@@ -52,29 +52,41 @@ public class Table {
         System.out.println("Dealer: " + dealer.displayHand());
         int action = activeHand.getAction();
         switch (action) {
-            case 0 -> System.out.println("Quitting");
-            case 1 -> System.out.println("Hit Me");
-            case 2 -> System.out.println("Wave Hand");
-            case 3 -> System.out.println("Double Down");
-            case 4 -> System.out.println("two hands");
+            case 0 -> stand(activeHand);
+            case 1 -> hit(activeHand);
+            case 2 -> stand(activeHand);
+            case 3 -> doubleDown(activeHand);
+            case 4 -> split(activeHand);
             default -> System.out.println("ERROR bad action");
         }
+        System.out.println(activeHand.displayHand() + "\n" + activeHand.getValue());
+
+
     }
 
     private void hit(Hand activeHand) {
         // TODO: 9/27/2021 hit
+        activeHand.addCard(deck.draw());
+        System.out.println("Hit Me");
     }
 
     private void stand(Hand activeHand) {
         // TODO: 9/27/2021 stand
+        System.out.println("Wave Hand");
     }
 
     private void doubleDown(Hand activeHand) {
         // TODO: 9/27/2021 doubleDown
+        activeHand.doubleBet();
+        System.out.println("Double Down");
+        hit(activeHand);
+        stand(activeHand);
     }
 
     private void split(Hand activeHand) {
+
         doubleDown(activeHand);
+        System.out.println("two hands");
     }
 
 
