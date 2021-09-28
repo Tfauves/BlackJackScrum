@@ -13,6 +13,9 @@ public class Table {
     public void playARound() {
         deck = new StandardDeck();
         deck.shuffle();
+        deal();
+        displayTable();
+        determineWinner();
 
     }
 
@@ -41,6 +44,14 @@ public class Table {
             return;
         }
         System.out.println("Dealer Wins");
+    }
+
+    private void turn(Hand activeHand) {
+        System.out.println("Dealer: " + dealer.displayHand());
+        int action = activeHand.getAction();
+
+
+
 
     }
 
