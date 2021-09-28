@@ -23,7 +23,7 @@ public class StandardDeck implements Deck {
         Collections.shuffle(cards);
     }
 
-    public Card deal() {
+    public Card draw() {
         return cards.remove(cards.size() -1);
     }
 

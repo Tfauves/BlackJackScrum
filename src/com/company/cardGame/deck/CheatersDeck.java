@@ -13,7 +13,7 @@ public class CheatersDeck implements Deck {
     public void shuffle() {}
 
     @Override
-    public Card deal() {
+    public Card draw() {
         int faceValue = Console.getInt("enter number 1-13", 1, 13, "invalid entry");
         int suit = Console.getInt("1. \u2664 | 2. \u2665 | 3. \u2666 | 4. \u2667", 1, 4, "Invalid entry");
         return new Card(SUITS[suit - 1], faceValue);
