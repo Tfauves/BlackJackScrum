@@ -64,7 +64,7 @@ public class Hand {
     }
 
     public int getBet() {
-    return bet;
+        return bet;
 
     }
 

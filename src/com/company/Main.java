@@ -4,6 +4,7 @@ import com.company.cardGame.actor.Dealer;
 import com.company.cardGame.actor.Player;
 import com.company.cardGame.blackJack.Actor;
 import com.company.cardGame.blackJack.Hand;
+import com.company.cardGame.deck.CheatersDeck;
 import com.company.cardGame.deck.Deck;
 import com.company.cardGame.deck.StandardDeck;
 import com.company.util.Console;
@@ -11,7 +12,8 @@ import com.company.util.Console;
 public class Main {
 
     public static void main(String[] args) {
-        Deck cardDeck = new StandardDeck();
+        Deck cardDeck = new CheatersDeck();
+//        Deck cardDeck = new StandardDeck();
         cardDeck.shuffle();
 //        System.out.println(cardDeck.deal().display());
 //        System.out.println(cardDeck.deal().display());
@@ -38,6 +40,7 @@ public class Main {
 //            System.out.println(myhand.displayHand());
 //            System.out.println(myhand.getValue());
         }
+        System.out.println(myhand.displayHand());
         System.out.println("Done");
     }
 }
