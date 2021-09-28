@@ -11,9 +11,9 @@ import com.company.util.Console;
 public class Main {
 
     public static void main(String[] args) {
-        Deck cardDeck = new CheatersDeck();
+//        Deck cardDeck = new CheatersDeck();
 //        Deck cardDeck = new StandardDeck();
-        cardDeck.shuffle();
+//        cardDeck.shuffle();
 //        System.out.println(cardDeck.deal().display());
 //        System.out.println(cardDeck.deal().display());
 //        System.out.println(cardDeck.deal().display());
