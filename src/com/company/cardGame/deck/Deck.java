@@ -1,7 +1,7 @@
 package com.company.cardGame.deck;
 
 public interface Deck {
-    Card deal();
+    Card draw();
     void shuffle();
 
 }
