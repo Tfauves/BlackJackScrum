@@ -15,6 +15,8 @@ public class Table {
         deck.shuffle();
         deal();
         displayTable();
+        turn(player);
+        turn(dealer);
         determineWinner();
 
     }
@@ -49,10 +51,30 @@ public class Table {
     private void turn(Hand activeHand) {
         System.out.println("Dealer: " + dealer.displayHand());
         int action = activeHand.getAction();
+        switch (action) {
+            case 0 -> System.out.println("Quitting");
+            case 1 -> System.out.println("Hit Me");
+            case 2 -> System.out.println("Wave Hand");
+            case 3 -> System.out.println("Double Down");
+            case 4 -> System.out.println("two hands");
+            default -> System.out.println("ERROR bad action");
+        }
+    }
 
+    private void hit(Hand activeHand) {
+        // TODO: 9/27/2021 hit
+    }
 
+    private void stand(Hand activeHand) {
+        // TODO: 9/27/2021 stand
+    }
 
+    private void doubleDown(Hand activeHand) {
+        // TODO: 9/27/2021 doubleDown
+    }
 
+    private void split(Hand activeHand) {
+        doubleDown(activeHand);
     }
 
 
