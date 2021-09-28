@@ -31,7 +31,7 @@ public class Table {
     private void displayTable() {
         StringBuilder outPut = new StringBuilder();
         outPut.append("Dealer: ").append(dealer.displayHand()).append("\n");
-        outPut.append("Player: ").append(player.displayHand()).append("\n");
+        outPut.append("Player: ").append(player.displayHand());
         System.out.println(outPut);
 
     }
