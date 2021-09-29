@@ -72,4 +72,8 @@ public class Hand {
         return cards.get(0).getRank() == cards.get(1).getRank();
     }
 
+    public void doubleBet() {
+        bet *= 2;
+    }
+
 }
