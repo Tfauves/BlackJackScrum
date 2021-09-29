@@ -11,7 +11,7 @@ public class Player implements Actor {
 
     public Player(String name, int startingBalance) {
         this.name = name;
-        startingBalance = startingBalance;
+        balance = startingBalance;
     }
 
     public Player(String name) {
@@ -20,6 +20,7 @@ public class Player implements Actor {
 
     @Override
     public String getName() {
+
         return name;
     }
 
@@ -29,8 +30,14 @@ public class Player implements Actor {
     }
 
     @Override
-    public int getBet() {
-        return Console.getInt("Enter a bet between 1 " + balance, 1,balance, "invalid bet");
+    public int placeBet() {
+        int bet = Console.getInt(
+                "Enter a bet 1 - " + balance, 1,
+                balance,
+                "invalid bet"
+        );
+        balance -= bet;
+        return bet;
     }
 
     private String getAvailableActions(Hand hand) {
@@ -53,9 +60,10 @@ public class Player implements Actor {
         //display hand and value
         System.out.println(hand.displayHand());
         System.out.println(hand.getValue());
-        //display available actions
-        //get selected action
+        return Console.getInt(getAvailableActions(hand), 0,  actionsCount,"invalid action");
+    }
 
-        return Console.getInt(getAvailableActions(hand), 0,  actionsCount,"Invalid action");
+    public void addBalance(int amount) {
+        balance += amount;
     }
 }
