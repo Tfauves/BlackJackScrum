@@ -10,6 +10,9 @@ public class Hand {
     private int bet = 0;
     private Actor holder;
 
+    public static final int PUSH_PAYOUT = 0;
+    public static final int NORMAL_PAYOUT = 1;
+
     public Hand(Actor holder) {
         this.holder = holder;
     }
@@ -23,10 +26,11 @@ public class Hand {
 //    }
 
     public String displayHand() {
-        String outPut = "";
+        StringBuilder outPut = new StringBuilder();
         for (Card card : cards) {
-            outPut += card.display() + " ";
+            outPut.append(card.display()).append(" ");
         }
+
         return outPut.toString().trim();
     }
 
@@ -65,7 +69,18 @@ public class Hand {
 
     public int getBet() {
         return bet;
+    }
 
+    public void placeBet() {
+        bet = holder.placeBet();
+    }
+
+    public int getBalance() {
+        return holder.getBalance();
+    }
+
+    public String getName() {
+        return holder.getName();
     }
 
     public boolean canSplit() {
@@ -74,6 +89,13 @@ public class Hand {
 
     public void doubleBet() {
         bet *= 2;
+    }
+
+    public void payOut(int type) {
+        switch (type) {
+            case PUSH_PAYOUT -> holder.getBalance();
+            case NORMAL_PAYOUT -> holder.addBalance(bet * 2);
+        }
     }
 
 }
