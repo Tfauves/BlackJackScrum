@@ -56,47 +56,51 @@ public class Table {
     }
 
     private boolean turn(Hand activeHand) {
-            System.out.println("Dealer: " + dealer.displayHand());
+            System.out.println(dealer.getName() + " " + dealer.displayHand());
             int action = activeHand.getAction();
             switch (action) {
-                case 0 -> stand(activeHand);
-                case 1 -> hit(activeHand);
-                case 2 -> stand(activeHand);
-                case 3 -> doubleDown(activeHand);
-                case 4 -> split(activeHand);
-                default -> {
-                    System.out.println("ERROR bad action");
-                    return false;
-                }
+                case Actor.QUIT -> stand(activeHand);
+                case Actor.HIT -> hit(activeHand);
+                case Actor.STAND -> stand(activeHand);
+                case Actor.DOUBLE -> doubleDown(activeHand);
+                case Actor.SPLIT -> split(activeHand);
+                default -> false;
             }
 //            System.out.println(activeHand.displayHand() + "\n" + activeHand.getValue());
 
 
     }
 
-    private void hit(Hand activeHand) {
+    private boolean hit(Hand activeHand) {
         // TODO: 9/27/2021 hit
         activeHand.addCard(deck.draw());
         System.out.println("Hit Me");
+        if (activeHand.getValue() > BUST_VALUE) {
+            System.out.println("Busted");
+            return false;
+        }
+        return true;
     }
 
-    private void stand(Hand activeHand) {
+    private boolean stand(Hand activeHand) {
         // TODO: 9/27/2021 stand
         System.out.println("Wave Hand");
+        return false;
     }
 
-    private void doubleDown(Hand activeHand) {
+    private boolean doubleDown(Hand activeHand) {
         // TODO: 9/27/2021 doubleDown
         activeHand.doubleBet();
         System.out.println("Double Down");
         hit(activeHand);
         stand(activeHand);
+        return false;
     }
 
-    private void split(Hand activeHand) {
+    private boolean split(Hand activeHand) {
 
-        doubleDown(activeHand);
         System.out.println("two hands");
+        return doubleDown(activeHand);
     }
 
 
