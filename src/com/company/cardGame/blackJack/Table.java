@@ -9,12 +9,15 @@ public class Table {
     Hand player = new Hand(new Player("player"));
     Hand dealer = new Hand(new Dealer());
     Deck deck;
+    int BUST_VALUE = 21;
 
     public void playARound() {
         deck = new StandardDeck();
         deck.shuffle();
         deal();
         displayTable();
+        while (turn(player)) {}
+
         turn(player);
         turn(dealer);
         determineWinner();
@@ -37,7 +40,11 @@ public class Table {
     }
 
     private void determineWinner() {
-        if (player.getValue() > dealer.getValue()) {
+        if (player.getValue() > BUST_VALUE) {
+            System.out.println("player busted");
+            return;
+        }
+        if (player.getValue() > dealer.getValue() || dealer.getValue() > BUST_VALUE) {
             System.out.println("Player Wins");
             return;
         }
@@ -48,18 +55,21 @@ public class Table {
         System.out.println("Dealer Wins");
     }
 
-    private void turn(Hand activeHand) {
-        System.out.println("Dealer: " + dealer.displayHand());
-        int action = activeHand.getAction();
-        switch (action) {
-            case 0 -> stand(activeHand);
-            case 1 -> hit(activeHand);
-            case 2 -> stand(activeHand);
-            case 3 -> doubleDown(activeHand);
-            case 4 -> split(activeHand);
-            default -> System.out.println("ERROR bad action");
-        }
-        System.out.println(activeHand.displayHand() + "\n" + activeHand.getValue());
+    private boolean turn(Hand activeHand) {
+            System.out.println("Dealer: " + dealer.displayHand());
+            int action = activeHand.getAction();
+            switch (action) {
+                case 0 -> stand(activeHand);
+                case 1 -> hit(activeHand);
+                case 2 -> stand(activeHand);
+                case 3 -> doubleDown(activeHand);
+                case 4 -> split(activeHand);
+                default -> {
+                    System.out.println("ERROR bad action");
+                    return false;
+                }
+            }
+//            System.out.println(activeHand.displayHand() + "\n" + activeHand.getValue());
 
 
     }
