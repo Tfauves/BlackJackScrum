@@ -5,17 +5,24 @@ import com.company.cardGame.blackJack.Hand;
 
 public class Dealer implements Actor {
     public int STAND_VALUE = 17;
+
     public String getName() {
-        return "Arnell";
+        return "Jasper";
     }
 
+    @Override
     public int getBalance() {
         return 0;
     }
 
     @Override
-    public int getBet() {
+    public int placeBet() {
         return 0;
+    }
+
+    @Override
+    public void addBalance(int amount) {
+        return;
     }
 
     public int getAction(Hand hand) {
