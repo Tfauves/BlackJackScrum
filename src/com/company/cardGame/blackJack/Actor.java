@@ -9,7 +9,8 @@ public interface Actor {
 
     String getName();
     int getBalance();
-    int getBet();
+    int placeBet();
     int getAction(Hand hand);
+    void addBalance(int amount);
     //int getAction(Hand hand, List<Cards> cards); cardCounter version
 }

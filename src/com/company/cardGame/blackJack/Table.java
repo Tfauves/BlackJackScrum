@@ -64,11 +64,10 @@ public class Table {
                 case Actor.STAND -> stand(activeHand);
                 case Actor.DOUBLE -> doubleDown(activeHand);
                 case Actor.SPLIT -> split(activeHand);
-                default -> false;
-            }
-//            System.out.println(activeHand.displayHand() + "\n" + activeHand.getValue());
-
-
+                default -> {
+                    return false;
+                }
+            };
     }
 
     private boolean hit(Hand activeHand) {
