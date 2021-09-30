@@ -5,8 +5,16 @@ import com.company.cardGame.actor.Player;
 import com.company.cardGame.deck.Deck;
 import com.company.cardGame.deck.StandardDeck;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Table {
+    // TODO: 9/29/2021 remove the line below.
     Hand player = new Hand(new Player("player"));
+    // TODO: 9/29/2021 try to implement multiple hands.
+    List<Hand> hands = new ArrayList<>();
+    // TODO: 9/29/2021 try to elimate use of list for players.
+    List<Actor> players = new ArrayList<>();
     Hand dealer = new Hand(new Dealer());
     Deck deck;
     int BUST_VALUE = 21;
@@ -14,27 +22,29 @@ public class Table {
     public void playARound() {
         deck = new StandardDeck();
         deck.shuffle();
+        player.placeBet();
         deal();
         displayTable();
         while (turn(player)) {}
-
-        turn(player);
-        turn(dealer);
+        System.out.println(player.displayHand());
+        while (turn(dealer));
+        displayTable();
         determineWinner();
-
+        System.out.println(player.getBalance());
     }
 
     private void deal() {
        for (int count = 0; count < 2; count++) {
-           player.addCard(deck.draw());
+           //list of hands
            dealer.addCard(deck.draw());
+           player.addCard(deck.draw());
        }
     }
 
     private void displayTable() {
         StringBuilder outPut = new StringBuilder();
-        outPut.append("Dealer: ").append(dealer.displayHand()).append("\n");
-        outPut.append("Player: ").append(player.displayHand());
+        outPut.append(dealer.getName() + " ").append(dealer.displayHand()).append("\n");
+        outPut.append(player.getName() + " ").append(player.displayHand());
         System.out.println(outPut);
 
     }
@@ -46,28 +56,28 @@ public class Table {
         }
         if (player.getValue() > dealer.getValue() || dealer.getValue() > BUST_VALUE) {
             System.out.println("Player Wins");
+            player.payOut(Hand.NORMAL_PAYOUT);
             return;
         }
         if (player.getValue() == dealer.getValue()) {
             System.out.println("Push");
+            player.payOut(Hand.PUSH_PAYOUT);
             return;
         }
         System.out.println("Dealer Wins");
     }
 
     private boolean turn(Hand activeHand) {
-            System.out.println(dealer.getName() + " " + dealer.displayHand());
-            int action = activeHand.getAction();
-            switch (action) {
-                case Actor.QUIT -> stand(activeHand);
-                case Actor.HIT -> hit(activeHand);
-                case Actor.STAND -> stand(activeHand);
-                case Actor.DOUBLE -> doubleDown(activeHand);
-                case Actor.SPLIT -> split(activeHand);
-                default -> {
-                    return false;
-                }
-            };
+        System.out.println(dealer.getName() + " " + dealer.displayHand());
+        int action = activeHand.getAction();
+        return switch (action) {
+            case Actor.QUIT -> stand(activeHand);
+            case Actor.HIT -> hit(activeHand);
+            case Actor.STAND -> stand(activeHand);
+            case Actor.DOUBLE -> doubleDown(activeHand);
+            case Actor.SPLIT -> split(activeHand);
+            default -> false;
+        };
     }
 
     private boolean hit(Hand activeHand) {
@@ -90,7 +100,7 @@ public class Table {
     private boolean doubleDown(Hand activeHand) {
         // TODO: 9/27/2021 doubleDown
         activeHand.doubleBet();
-        System.out.println("Double Down");
+        System.out.println("Doubled Down");
         hit(activeHand);
         stand(activeHand);
         return false;
