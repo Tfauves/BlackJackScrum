@@ -4,20 +4,33 @@ import com.company.cardGame.actor.Dealer;
 import com.company.cardGame.actor.Player;
 import com.company.cardGame.deck.Deck;
 import com.company.cardGame.deck.StandardDeck;
+import com.company.util.Console;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Table {
     // TODO: 9/29/2021 remove the line below.
-    Hand player = new Hand(new Player("player"));
+    private Hand player = new Hand(new Player("player"));
     // TODO: 9/29/2021 try to implement multiple hands.
-    List<Hand> hands = new ArrayList<>();
+    private List<Hand> hands = new ArrayList<>();
     // TODO: 9/29/2021 try to elimate use of list for players.
-    List<Actor> players = new ArrayList<>();
-    Hand dealer = new Hand(new Dealer());
-    Deck deck;
-    int BUST_VALUE = 21;
+    private List<Actor> players = new ArrayList<>();
+    private Hand dealer = new Hand(new Dealer());
+    private Deck deck;
+    public static final int BUST_VALUE = 21;
+
+    public Table() {
+        int playerCount = Console.getInt("How many player?", 1, 6, "invalid input");
+        for (int count = 0; count < playerCount; count++) {
+            Player newPlayer = new Player("Player" + count + 1);
+            players.add(newPlayer);
+            hands.add(new Hand(newPlayer));
+
+        }
+
+
+    }
 
     public void playARound() {
         deck = new StandardDeck();
