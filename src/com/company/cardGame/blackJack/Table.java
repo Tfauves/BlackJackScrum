@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Table {
     // TODO: 9/29/2021 remove the line below.
-    private Hand player = new Hand(new Player("player"));
+   // private Hand player = new Hand(new Player("player"));
     // TODO: 9/29/2021 try to implement multiple hands.
     private List<Hand> hands = new ArrayList<>();
     // TODO: 9/29/2021 try to elimate use of list for players.
@@ -23,19 +23,21 @@ public class Table {
     public Table() {
         int playerCount = Console.getInt("How many player?", 1, 6, "invalid input");
         for (int count = 0; count < playerCount; count++) {
-            Player newPlayer = new Player("Player" + count + 1);
+            Player newPlayer = new Player("Player" + (count + 1) + ": ");
             players.add(newPlayer);
             hands.add(new Hand(newPlayer));
 
         }
-
 
     }
 
     public void playARound() {
         deck = new StandardDeck();
         deck.shuffle();
+        for (Hand player : hands) {
         player.placeBet();
+
+        }
         deal();
         displayTable();
         while (turn(player)) {}
@@ -50,16 +52,19 @@ public class Table {
        for (int count = 0; count < 2; count++) {
            //list of hands
            dealer.addCard(deck.draw());
+           for (Hand player : hands) {
            player.addCard(deck.draw());
+           }
        }
     }
 
     private void displayTable() {
         StringBuilder outPut = new StringBuilder();
-        outPut.append(dealer.getName() + " ").append(dealer.displayHand()).append("\n");
-        outPut.append(player.getName() + " ").append(player.displayHand());
+        outPut.append(dealer.getName()).append(" ").append(dealer.displayHand()).append("\n");
+        for (Hand player : hands) {
+        outPut.append(player.getName()).append(" ").append(player.displayHand()).append(" | ");
+        }
         System.out.println(outPut);
-
     }
 
     private void determineWinner() {
