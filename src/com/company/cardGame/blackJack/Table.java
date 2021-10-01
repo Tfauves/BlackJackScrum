@@ -40,12 +40,20 @@ public class Table {
         }
         deal();
         displayTable();
-        while (turn(player)) {}
-        System.out.println(player.displayHand());
+        for (Hand player : hands) {
+        while(true) {
+            if (!turn(player)) break;
+            }
+            System.out.println(player.displayHand());
+        Console.getString("Enter to start next turn", false);
+        }
         while (turn(dealer));
         displayTable();
-        determineWinner();
+        for (Hand player : hands) {
+        determineWinner(player);
         System.out.println(player.getBalance());
+
+        }
     }
 
     private void deal() {
@@ -67,7 +75,7 @@ public class Table {
         System.out.println(outPut);
     }
 
-    private void determineWinner() {
+    private void determineWinner(Hand player) {
         if (player.getValue() > BUST_VALUE) {
             System.out.println("player busted");
             return;
