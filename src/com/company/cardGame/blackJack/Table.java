@@ -15,20 +15,23 @@ public class Table {
     // TODO: 9/29/2021 try to implement multiple hands.
     private List<Hand> hands = new ArrayList<>();
     // TODO: 9/29/2021 try to elimate use of list for players.
-    private List<Actor> players = new ArrayList<>();
     private Hand dealer = new Hand(new Dealer());
     private Deck deck;
     public static final int BUST_VALUE = 21;
+    private int playerCount = 0;
 
     public Table() {
-        int playerCount = Console.getInt("How many player?", 1, 6, "invalid input");
+        playerCount = Console.getInt("How many player?", 1, 6, "invalid input");
         for (int count = 0; count < playerCount; count++) {
             Player newPlayer = new Player("Player" + (count + 1) + ": ");
-            players.add(newPlayer);
             hands.add(new Hand(newPlayer));
-
         }
+    }
 
+    public void playGame() {
+        while (true) {
+            playARound();
+        }
     }
 
     public void playARound() {
@@ -50,7 +53,8 @@ public class Table {
     }
 
     private void playerTurns() {
-        for (Hand player : hands) {
+        for (int count = 0; count < hands.size(); count++) {
+            Hand player = hands.get(count);
             while(true) {
                 if (!turn(player)) break;
             }
@@ -63,6 +67,9 @@ public class Table {
         for (Hand player : hands) {
             determineWinner(player);
             System.out.println(player.getBalance());
+        }
+        while (hands.size() > playerCount) {
+            hands.remove(hands.size() -1);
         }
     }
 
@@ -105,15 +112,21 @@ public class Table {
 
     private boolean turn(Hand activeHand) {
         System.out.println(dealer.getName() + " " + dealer.displayHand());
+        System.out.println(activeHand.getName());
         int action = activeHand.getAction();
         return switch (action) {
-            case Actor.QUIT -> stand(activeHand);
+            case Actor.QUIT -> quit();
             case Actor.HIT -> hit(activeHand);
             case Actor.STAND -> stand(activeHand);
             case Actor.DOUBLE -> doubleDown(activeHand);
             case Actor.SPLIT -> split(activeHand);
             default -> false;
         };
+    }
+
+    private boolean quit() {
+        System.exit(0);
+        return false;
     }
 
     private boolean hit(Hand activeHand) {
@@ -143,9 +156,14 @@ public class Table {
     }
 
     private boolean split(Hand activeHand) {
-
         System.out.println("two hands");
-        return doubleDown(activeHand);
+        activeHand.doubleBet();
+        Hand newHand = activeHand.splitHand();
+        activeHand.addCard(deck.draw());
+        newHand.addCard(deck.draw());
+        hands.add(newHand);
+
+        return true;
     }
 
 

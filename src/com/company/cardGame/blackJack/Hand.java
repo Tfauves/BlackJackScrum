@@ -59,7 +59,6 @@ public class Hand {
     }
 
     public int getAction() {
-
         return holder.getAction(this);
     }
 
@@ -88,6 +87,7 @@ public class Hand {
     }
 
     public void doubleBet() {
+        holder.addBalance(-bet);
         bet *= 2;
     }
 
@@ -96,6 +96,18 @@ public class Hand {
             case PUSH_PAYOUT -> holder.getBalance();
             case NORMAL_PAYOUT -> holder.addBalance(bet * 2);
         }
+    }
+
+    public Card removeCard(int index) {
+        return cards.remove(index);
+    }
+
+    public Hand splitHand() {
+        bet = bet / 2;
+        Hand hand = new Hand(holder);
+        hand.addCard(cards.remove(1));
+        hand.bet = bet;
+        return hand;
     }
 
 }
