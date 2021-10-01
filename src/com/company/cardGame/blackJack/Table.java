@@ -10,11 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Table {
-    // TODO: 9/29/2021 remove the line below.
-   // private Hand player = new Hand(new Player("player"));
-    // TODO: 9/29/2021 try to implement multiple hands.
     private List<Hand> hands = new ArrayList<>();
-    // TODO: 9/29/2021 try to elimate use of list for players.
     private Hand dealer = new Hand(new Dealer());
     private Deck deck;
     public static final int BUST_VALUE = 21;

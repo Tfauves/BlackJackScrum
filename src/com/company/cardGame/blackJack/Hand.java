@@ -12,6 +12,7 @@ public class Hand {
 
     public static final int PUSH_PAYOUT = 0;
     public static final int NORMAL_PAYOUT = 1;
+    public static final int BLACK_JACK = 2;
 
     public Hand(Actor holder) {
         this.holder = holder;
@@ -91,10 +92,12 @@ public class Hand {
         bet *= 2;
     }
 
+    // TODO: 9/30/2021 add blackJack payOut
     public void payOut(int type) {
         switch (type) {
             case PUSH_PAYOUT -> holder.getBalance();
             case NORMAL_PAYOUT -> holder.addBalance(bet * 2);
+            case BLACK_JACK -> holder.addBalance(bet * 2.5);
         }
     }
 

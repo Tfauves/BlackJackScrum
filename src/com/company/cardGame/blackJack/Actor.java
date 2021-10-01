@@ -7,10 +7,11 @@ public interface Actor {
     int SPLIT = 4;
     int QUIT = 0;
 
+    // TODO: 9/30/2021 create a new Actor with my own logic based on what cards they had vs what the dealer has.
     String getName();
     int getBalance();
     int placeBet();
-    int getAction(Hand hand);
-    void addBalance(int amount);
+    int getAction(Hand hand); // TODO: 9/30/2021 change signature to get dealer hand and refactor.
+    void addBalance(double amount);// TODO: 9/30/2021 refactor for double.
     //int getAction(Hand hand, List<Cards> cards); cardCounter version
 }
