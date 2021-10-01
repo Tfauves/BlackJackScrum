@@ -34,25 +34,35 @@ public class Table {
     public void playARound() {
         deck = new StandardDeck();
         deck.shuffle();
-        for (Hand player : hands) {
-        player.placeBet();
-
-        }
+        getBets();
         deal();
         displayTable();
-        for (Hand player : hands) {
-        while(true) {
-            if (!turn(player)) break;
-            }
-            System.out.println(player.displayHand());
-        Console.getString("Enter to start next turn", false);
-        }
+        playerTurns();
         while (turn(dealer));
         displayTable();
-        for (Hand player : hands) {
-        determineWinner(player);
-        System.out.println(player.getBalance());
+        endRound();
+    }
 
+    private void getBets() {
+        for (Hand player : hands) {
+            player.placeBet();
+        }
+    }
+
+    private void playerTurns() {
+        for (Hand player : hands) {
+            while(true) {
+                if (!turn(player)) break;
+            }
+            System.out.println(player.displayHand());
+            Console.getString("Enter to start next turn", false);
+        }
+    }
+
+    private void endRound() {
+        for (Hand player : hands) {
+            determineWinner(player);
+            System.out.println(player.getBalance());
         }
     }
 
