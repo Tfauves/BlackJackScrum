@@ -126,7 +126,6 @@ public class Table {
     }
 
     private boolean hit(Hand activeHand) {
-        // TODO: 9/27/2021 hit
         activeHand.addCard(deck.draw());
         System.out.println("Hit Me");
         if (activeHand.getValue() > BUST_VALUE) {
@@ -137,13 +136,11 @@ public class Table {
     }
 
     private boolean stand(Hand activeHand) {
-        // TODO: 9/27/2021 stand
         System.out.println("Wave Hand");
         return false;
     }
 
     private boolean doubleDown(Hand activeHand) {
-        // TODO: 9/27/2021 doubleDown
         activeHand.doubleBet();
         System.out.println("Doubled Down");
         hit(activeHand);
@@ -161,6 +158,5 @@ public class Table {
 
         return true;
     }
-
 
 }

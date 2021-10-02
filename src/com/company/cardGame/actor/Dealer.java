@@ -21,7 +21,7 @@ public class Dealer implements Actor {
     }
 
     @Override
-    public void addBalance(int amount) {
+    public void addBalance(double amount) {
         return;
     }
 

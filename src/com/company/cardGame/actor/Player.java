@@ -63,6 +63,11 @@ public class Player implements Actor {
         return Console.getInt(getAvailableActions(hand), 0,  actionsCount,"invalid action");
     }
 
+    @Override
+    public void addBalance(double amount) {
+
+    }
+
     public void addBalance(int amount) {
         balance += amount;
     }
