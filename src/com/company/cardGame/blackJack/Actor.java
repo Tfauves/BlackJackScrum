@@ -12,6 +12,6 @@ public interface Actor {
     int getBalance();
     int placeBet();
     int getAction(Hand hand); // TODO: 9/30/2021 change signature to get dealer hand and refactor.
-    void addBalance(double amount);// TODO: 9/30/2021 refactor for double.
+    void addBalance(double amount);
     //int getAction(Hand hand, List<Cards> cards); cardCounter version
 }

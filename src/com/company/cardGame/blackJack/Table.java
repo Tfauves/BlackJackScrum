@@ -2,6 +2,7 @@ package com.company.cardGame.blackJack;
 
 import com.company.cardGame.actor.Dealer;
 import com.company.cardGame.actor.Player;
+import com.company.cardGame.deck.CheatersDeck;
 import com.company.cardGame.deck.Deck;
 import com.company.cardGame.deck.StandardDeck;
 import com.company.util.Console;
@@ -31,7 +32,8 @@ public class Table {
     }
 
     public void playARound() {
-        deck = new StandardDeck();
+//        deck = new StandardDeck();
+        deck = new CheatersDeck();
         deck.shuffle();
         getBets();
         deal();
@@ -101,6 +103,11 @@ public class Table {
         if (player.getValue() == dealer.getValue()) {
             System.out.println("Push");
             player.payOut(Hand.PUSH_PAYOUT);
+            return;
+        }
+        if (player.getValue() == BUST_VALUE) {
+            System.out.println("BlackJack");
+            player.payOut(Hand.BLACK_JACK);
             return;
         }
         System.out.println("Dealer Wins");
