@@ -32,8 +32,8 @@ public class Table {
     }
 
     public void playARound() {
-//        deck = new StandardDeck();
-        deck = new CheatersDeck();
+        deck = new StandardDeck();
+//        deck = new CheatersDeck();
         deck.shuffle();
         getBets();
         deal();
@@ -91,6 +91,7 @@ public class Table {
     }
 
     private void determineWinner(Hand player) {
+
         if (player.getValue() > BUST_VALUE) {
             System.out.println("player busted");
             return;
@@ -110,6 +111,7 @@ public class Table {
             player.payOut(Hand.BLACK_JACK);
             return;
         }
+
         System.out.println("Dealer Wins");
     }
 
