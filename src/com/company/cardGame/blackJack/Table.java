@@ -39,6 +39,7 @@ public class Table {
         deal();
         displayTable();
         playerTurns();
+        dealer.revealHand();
         while (turn(dealer));
         displayTable();
         endRound();
@@ -53,6 +54,7 @@ public class Table {
     private void playerTurns() {
         for (int count = 0; count < hands.size(); count++) {
             Hand player = hands.get(count);
+            player.revealHand();
             while(true) {
                 if (!turn(player)) break;
             }
@@ -74,9 +76,10 @@ public class Table {
     private void deal() {
        for (int count = 0; count < 2; count++) {
            //list of hands
-           dealer.addCard(deck.draw());
+           dealer.addCard(count == 0 ? deck.draw() : deck.flipDraw());;
            for (Hand player : hands) {
-           player.addCard(deck.draw());
+               player.addCard(count == 0 ? deck.draw() : deck.flipDraw());
+//               player.addCard(deck.draw());
            }
        }
     }
@@ -135,7 +138,7 @@ public class Table {
     }
 
     private boolean hit(Hand activeHand) {
-        activeHand.addCard(deck.draw());
+        activeHand.addCard(deck.flipDraw());
         System.out.println("Hit Me");
         if (activeHand.getValue() > BUST_VALUE) {
             System.out.println("Busted");
@@ -161,8 +164,8 @@ public class Table {
         System.out.println("two hands");
         activeHand.doubleBet();
         Hand newHand = activeHand.splitHand();
-        activeHand.addCard(deck.draw());
-        newHand.addCard(deck.draw());
+        activeHand.addCard(deck.flipDraw());
+        newHand.addCard(deck.flipDraw());
         hands.add(newHand);
 
         return true;

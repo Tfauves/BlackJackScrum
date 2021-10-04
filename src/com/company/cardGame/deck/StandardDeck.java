@@ -27,6 +27,12 @@ public class StandardDeck implements Deck {
         return cards.remove(cards.size() -1);
     }
 
+    public Card flipDraw() {
+        Card card = draw();
+        card.flip();
+        return card;
+    }
+
     public List<Card> getCards() {
         return cards;
     }

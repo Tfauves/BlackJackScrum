@@ -38,4 +38,8 @@ public class Card {
         isFaceDown = !isFaceDown;
     }
 
+    public boolean getIsFaceDown() {
+        return isFaceDown;
+    }
+
 }

@@ -113,4 +113,12 @@ public class Hand {
         return hand;
     }
 
+    public void revealHand() {
+        for (Card card : cards) {
+            if (card.getIsFaceDown()) {
+                card.flip();
+            }
+        }
+    }
+
 }
