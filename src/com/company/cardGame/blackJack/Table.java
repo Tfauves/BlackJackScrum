@@ -67,7 +67,9 @@ public class Table {
         for (Hand player : hands) {
             determineWinner(player);
             System.out.println(player.getBalance());
+            player.discardHand();
         }
+        dealer.discardHand();
         while (hands.size() > playerCount) {
             hands.remove(hands.size() -1);
         }

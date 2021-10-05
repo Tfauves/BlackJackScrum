@@ -121,4 +121,8 @@ public class Hand {
         }
     }
 
+    public void discardHand() {
+        cards.clear();
+    }
+
 }
