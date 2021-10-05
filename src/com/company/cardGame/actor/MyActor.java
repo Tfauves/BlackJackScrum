@@ -25,16 +25,20 @@ public class MyActor implements Actor {
 
     @Override
     public int getAction(Hand hand) {
-        if (hand.getValue() >= STAND_VALUE) {
-            return STAND;
-        }
-        if (hand.getCard(0).getRank() == hand.getCard(1).getRank()) {
+//        if (hand.getValue() >= STAND_VALUE) {
+//            return STAND;
+//        }
+        if (hand.getCard(0).getRank() == 11 && hand.getCard(1).getRank() == 11) {
             return SPLIT;
         }
         if (hand.getValue() == 11) {
             return DOUBLE;
         }
-        return HIT;
+        if (hand.getValue() < STAND_VALUE) {
+
+            return HIT;
+        }
+        return STAND;
     }
 
     @Override

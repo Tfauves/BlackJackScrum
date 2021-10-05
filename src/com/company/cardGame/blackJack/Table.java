@@ -34,15 +34,15 @@ public class Table {
     }
 
     public void playARound() {
-        deck = new StandardDeck();
-//        deck = new CheatersDeck();
+//        deck = new StandardDeck();
+        deck = new CheatersDeck();
         deck.shuffle();
         getBets();
         deal();
         displayTable();
         playerTurns();
-        my.revealHand();
-        while(turn(my));
+//        my.revealHand();
+//        while(turn(my));
         dealer.revealHand();
         while (turn(dealer));
         displayTable();
@@ -82,7 +82,8 @@ public class Table {
     private void deal() {
        for (int count = 0; count < 2; count++) {
            //list of hands
-           dealer.addCard(count == 0 ? deck.draw() : deck.flipDraw());;
+           dealer.addCard(count == 0 ? deck.draw() : deck.flipDraw());
+//           my.addCard(count == 0 ? deck.draw() : deck.flipDraw());
            for (Hand player : hands) {
                player.addCard(count == 0 ? deck.draw() : deck.flipDraw());
 //               player.addCard(deck.draw());
@@ -93,6 +94,7 @@ public class Table {
     private void displayTable() {
         StringBuilder outPut = new StringBuilder();
         outPut.append(dealer.getName()).append(" ").append(dealer.displayHand()).append("\n");
+//        outPut.append(my.getName()).append(" ").append(my.displayHand()).append("\n");
         for (Hand player : hands) {
         outPut.append(player.getName()).append(" ").append(player.displayHand()).append(" | ");
         }
@@ -126,6 +128,7 @@ public class Table {
 
     private boolean turn(Hand activeHand) {
         System.out.println(dealer.getName() + " " + dealer.displayHand());
+//        System.out.println(my.getName() + " " + my.displayHand());
         System.out.println(activeHand.getName());
         int action = activeHand.getAction();
         return switch (action) {
