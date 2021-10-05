@@ -7,7 +7,6 @@ public class MyActor implements Actor {
     public int STAND_VALUE = 17;
     private int balance = 1000;
 
-
     @Override
     public String getName() {
         return "Tfauves";
@@ -25,10 +24,8 @@ public class MyActor implements Actor {
 
     @Override
     public int getAction(Hand hand) {
-//        if (hand.getValue() >= STAND_VALUE) {
-//            return STAND;
-//        }
-        if (hand.getCard(0).getRank() == 11 && hand.getCard(1).getRank() == 11) {
+
+        if (hand.getCard(0).getRank() == 8 && hand.getCard(1).getRank() == 8) {
             return SPLIT;
         }
         if (hand.getValue() == 11) {
