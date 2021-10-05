@@ -60,7 +60,6 @@ public class Hand {
     }
 
     public int getAction() {
-
         return holder.getAction(this);
     }
 
@@ -93,7 +92,6 @@ public class Hand {
         bet *= 2;
     }
 
-    // TODO: 9/30/2021 add blackJack payOut
     public void payOut(int type) {
         switch (type) {
             case PUSH_PAYOUT -> holder.getBalance();
@@ -126,7 +124,7 @@ public class Hand {
         cards.clear();
     }
 
-    public int getshowrank() {
+    public int getShowRank() {
         return cards.get(1).getRank();
     }
 
