@@ -28,4 +28,9 @@ public class Dealer implements Actor {
     public int getAction(Hand hand) {
         return hand.getValue() < STAND_VALUE ? HIT : STAND;
     }
+
+    @Override
+    public int getAction(Hand hand, Hand dealer) {
+        return 0;
+    }
 }

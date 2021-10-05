@@ -11,7 +11,8 @@ public interface Actor {
     String getName();
     int getBalance();
     int placeBet();
-    int getAction(Hand hand); // TODO: 9/30/2021 change signature to get dealer hand and refactor.
+    int getAction(Hand hand);
+    int getAction(Hand hand, Hand dealer);
     void addBalance(double amount);
     //int getAction(Hand hand, List<Cards> cards); cardCounter version
 }
