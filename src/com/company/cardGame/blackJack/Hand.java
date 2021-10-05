@@ -60,6 +60,7 @@ public class Hand {
     }
 
     public int getAction() {
+
         return holder.getAction(this);
     }
 
@@ -123,6 +124,10 @@ public class Hand {
 
     public void discardHand() {
         cards.clear();
+    }
+
+    public int getshowrank() {
+        return cards.get(1).getRank();
     }
 
 }
