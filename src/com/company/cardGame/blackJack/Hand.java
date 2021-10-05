@@ -104,6 +104,10 @@ public class Hand {
         return cards.remove(index);
     }
 
+    public Card getCard(int index) {
+        return cards.get(index);
+    }
+
     public Hand splitHand() {
         bet = bet / 2;
         Hand hand = new Hand(holder);

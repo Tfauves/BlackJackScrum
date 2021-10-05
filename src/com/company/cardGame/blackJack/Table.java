@@ -1,6 +1,7 @@
 package com.company.cardGame.blackJack;
 
 import com.company.cardGame.actor.Dealer;
+import com.company.cardGame.actor.MyActor;
 import com.company.cardGame.actor.Player;
 import com.company.cardGame.deck.CheatersDeck;
 import com.company.cardGame.deck.Deck;
@@ -13,6 +14,7 @@ import java.util.List;
 public class Table {
     private List<Hand> hands = new ArrayList<>();
     private Hand dealer = new Hand(new Dealer());
+    private Hand my = new Hand(new MyActor());
     private Deck deck;
     public static final int BUST_VALUE = 21;
     private int playerCount = 0;
@@ -39,6 +41,8 @@ public class Table {
         deal();
         displayTable();
         playerTurns();
+        my.revealHand();
+        while(turn(my));
         dealer.revealHand();
         while (turn(dealer));
         displayTable();

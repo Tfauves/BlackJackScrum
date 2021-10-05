@@ -4,7 +4,7 @@ import com.company.cardGame.blackJack.Actor;
 import com.company.cardGame.blackJack.Hand;
 
 public class MyActor implements Actor {
-    public int STAND_VALUE = 18;
+    public int STAND_VALUE = 17;
     private int balance = 1000;
 
 
@@ -20,15 +20,21 @@ public class MyActor implements Actor {
 
     @Override
     public int placeBet() {
-        return 0;
+        return balance / 2;
     }
 
     @Override
     public int getAction(Hand hand) {
-        if (hand.getValue() < STAND_VALUE) {
-            return HIT;
+        if (hand.getValue() >= STAND_VALUE) {
+            return STAND;
         }
-        return 0;
+        if (hand.getCard(0).getRank() == hand.getCard(1).getRank()) {
+            return SPLIT;
+        }
+        if (hand.getValue() == 11) {
+            return DOUBLE;
+        }
+        return HIT;
     }
 
     @Override
