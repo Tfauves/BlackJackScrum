@@ -34,8 +34,8 @@ public class Table {
     }
 
     public void playARound() {
-//        deck = new StandardDeck();
-        deck = new CheatersDeck();
+        deck = new StandardDeck();
+//        deck = new CheatersDeck();
         deck.shuffle();
         getBets();
         deal();
@@ -86,7 +86,7 @@ public class Table {
           // my.addCard(count == 0 ? deck.draw() : deck.flipDraw());
            for (Hand player : hands) {
                player.addCard(count == 0 ? deck.draw() : deck.flipDraw());
-              player.addCard(deck.draw());
+//               player.addCard(deck.draw());
            }
        }
     }
